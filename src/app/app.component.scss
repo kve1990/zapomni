@@ -1,0 +1,138 @@
+.lang-buttons {
+  position: absolute;
+  z-index: 100;
+  top: 4px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px 0 rgba(0,0,0,.15);
+
+  button {
+    width: 36px;
+    height: 24px;
+    border: none;
+    background-color: #333;
+    cursor: pointer;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+    &:disabled {
+      background-color: rgba(0, 0, 0, 0.05);
+      color: silver;
+      cursor: default;
+    }
+  }
+}
+
+.container {
+  width: 100vw;
+  height:100vh;
+  overflow: hidden;
+}
+
+.img-container {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  will-change: opacity;
+  transition: opacity .3s;
+  cursor: pointer;
+}
+
+img {
+  min-width: 100vw;
+  height: 100vh;
+}
+
+.slide-button {
+  width: 30px;
+  height: 4px;
+  background-color: rgba(255,255,255,.5);
+  cursor: pointer;
+  position: absolute;
+
+  &:hover, &-select {
+    width: 64px !important;
+    background-color: rgba(255,255,255,1) !important;
+    pointer-events: none;
+    transition: background-color .4s, width 4s cubic-bezier(0.190, 1.000, 0.220, 1.000) !important;
+  }
+
+  &-parent-container {
+    position: relative;
+    margin: 22px 0;
+    height: 6px;
+    box-shadow: 1px 1px 0 1px rgba(0,0,0,.05);
+  }
+}
+
+.slider {
+  position: absolute;
+  top: 50%;
+  right: 80px;
+  opacity: 1;
+  min-width: 30px;
+}
+
+.select-box {
+  height: 6px;
+}
+
+.text-container {
+  height: 100vh;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: rgba(0,0,0,.01);
+}
+
+.page-text {
+  min-height: 373px;
+  width: 50%;
+  height: 100%;
+  opacity: 0;
+  font-weight: 300;
+  font-size: 24px;
+  text-shadow: 2px 2px 2px rgba(0,0,0,.35);
+  color: white;
+
+  h3 {
+    font-size: 48px;
+    margin: 10px 0;
+  }
+}
+
+.selected {
+  opacity: 1;
+  transition: 1s;
+}
+
+.info {
+  border: none;
+  width: 120px;
+  height: 40px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: cornflowerblue;
+}

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="img-container"
+      *ngFor="let i of events$ | async; let select = index;"
+      [style.backgroundColor]="'rgb(' + i.poster.color +')'"
+      [ngClass]="{'selected': select == selectedIndex}">
+    <img [src]="'https://zapomni.lastick.ru' + i.poster.path">
+  </div>
+
+  <div [ngStyle]="{'transform': 'translateY('+ transform + '%' +')', 'transition': '.8s'}">
+    <div class="text-container">
+      <div class="page-text" *ngFor="let i of events$ | async;let select = index;" [ngClass]="{'selected': select == selectedIndex}">
+        <h3>{{i.name[service.lang$.getValue()]}}</h3>
+        <div>{{i.NearestSchedule.begin_time | date: 'dd.MM.yyyy HH:mm'}}</div>
+        <button class="info" (click)="showModal(i)">подробнее</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="slider">
+  <div class="slide-button-parent-container"  *ngFor="let i of events$ | async; let x =index" (click)="selected(x)">
+     <div class="select-box">
+      <div class="slide-button" [ngClass]="{'slide-button-select': x == selectedIndex}" >
+      </div>
+     </div>
+  </div>
+</div>
+
+<div class="lang-buttons">
+  <button (click)="service.lang$.next('ru')" [disabled]="service.lang$.getValue() === 'ru'">RU</button>
+  <button (click)="service.lang$.next('en')" [disabled]="service.lang$.getValue() === 'en'">EN</button>
+</div>
+
+<ng-template appModal></ng-template>
