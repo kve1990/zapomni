@@ -31,7 +31,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.events$ = this.service.getEvents();
-    this.subscribtions.push(this.events$.subscribe(events => this.eventCount = events.length));
+    this.subscribtions.push(this.events$.subscribe(events => {
+      if (events) {
+        this.eventCount = events.length;
+      }
+    }));
     this.autoSlide();
   }
 
